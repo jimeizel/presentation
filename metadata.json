@@ -1,0 +1,6 @@
+{
+  "name": "Monday Presentation - Colors in Google Slides",
+  "description": "Converted Canva Monday Presentation into animated Google Slides with interactive presentation mode, quiz trivia, and export tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

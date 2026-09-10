@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Visible Light Electromagnetic Spectrum Gradient (380nm - 750nm) */
+.spectrum-gradient {
+  background: linear-gradient(
+    90deg,
+    #7e22ce 0%,    /* Violet ~380-420nm */
+    #3b82f6 20%,   /* Blue ~450-495nm */
+    #06b6d4 35%,   /* Cyan ~495-520nm */
+    #22c55e 50%,   /* Green ~520-565nm */
+    #eab308 65%,   /* Yellow ~570-590nm */
+    #f97316 80%,   /* Orange ~590-620nm */
+    #ef4444 100%   /* Red ~620-750nm */
+  );
+}
+
+/* Glassmorphism surfaces */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Custom subtle scrollbars for presenter notes and filmstrip */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.8);
+}
+
+@media print {
+  @page {
+    size: 16in 9in landscape;
+    margin: 0;
+  }
+  
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide UI elements during print */
+  header, nav, aside, .no-print, [role="toolbar"] {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-slide-page {
+    page-break-after: always !important;
+    break-after: page !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+}
