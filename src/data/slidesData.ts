@@ -1,46 +1,40 @@
 import { SlideData } from '../types';
 
 export const SLIDES_DATA: SlideData[] = [
-  // Slide 1: Cover
+  // Slide 1: Clue 1 (Colors Only - Audience Guess)
   {
     id: 1,
     category: 'cover',
-    title: 'MONDAY PRESENTATION',
-    subtitle: 'THE PSYCHOLOGY & CULTURAL POWER OF COLORS',
-    colorHex: '#0F172A',
+    title: 'Guess the Topic',
+    subtitle: 'Clue 1',
+    colorHex: '#676767',
     canvaImage: '/assets/canva/slide_01.png',
-    speakerNotes: 'Good morning everyone! Welcome to today’s presentation on the psychology and cultural power of colors. Color is not merely aesthetic ornamentation — it is biological, neurological, and culturally communicative. In the next 20 minutes, we are going to explore how colors alter human perception, examine the three foundational primary colors, uncover how global cultures interpret the exact same hue in diametrically opposed ways, and conclude with an interactive "Fake or Real" trivia session.',
+    speakerNotes: 'Good morning everyone! Take a close look at the screen. We’ve kept this slide completely free of text because we have an opening question for you: Can anyone in the audience guess what our topic is today? Call out your guesses!',
     transition: 'fade',
     animations: [],
   },
 
-  // Slide 2: Outline
+  // Slide 2: Clue 2 (Colors Only - Red & Blue Clue)
   {
     id: 2,
     category: 'agenda',
-    title: 'OUTLINE',
-    subtitle: 'Agenda & Core Pillars',
-    colorHex: '#0F172A',
-    bullets: [
-      'Colors in Our Lives',
-      'Primary Colors (Red, Blue, Yellow)',
-      'Colors Across Cultures (White, Black, Green)',
-      'Fake or Real Trivia',
-    ],
+    title: 'Guess the Topic',
+    subtitle: 'Clue 2',
+    colorHex: '#FF1616',
     canvaImage: '/assets/canva/slide_02.png',
-    speakerNotes: 'Here is our roadmap for today: 1) Colors in Our Lives, 2) Primary Colors, 3) Colors Across Cultures, and 4) Fake or Real Trivia challenge.',
+    speakerNotes: 'Here is your second clue! Look at this vibrant contrast between red and blue. What connects these? Any more guesses about our theme today?',
     transition: 'slide-left',
     animations: [],
   },
 
-  // Slide 3: Chapter 01 - Divider
+  // Slide 3: Chapter 01 - Divider (Topic Revealed)
   {
     id: 3,
     category: 'section',
     title: 'COLORS IN OUR LIVES',
     colorHex: '#000000',
     canvaImage: '/assets/canva/slide_03.png',
-    speakerNotes: 'Let us begin with Chapter 1: Colors in Our Lives. Color operates as an immediate subconscious shortcut in our everyday environment, affecting our mood, behavior, and physiological responses.',
+    speakerNotes: 'That’s right! Today’s presentation is COLORS IN OUR LIVES: The Psychology & Cultural Power of Colors. Welcome everyone! Color operates as an immediate subconscious shortcut in our everyday environment, affecting our mood, behavior, and physiological responses.',
     transition: 'zoom',
     animations: [],
   },

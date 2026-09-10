@@ -78,7 +78,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
               style={{ backgroundColor: slide.colorHex || '#1E293B' }} 
             />
             <span className="font-canva-serif text-slate-600 font-bold tracking-wider">
-              Monday Presentation
+              {slide.id <= 2 ? 'Guess the Topic' : 'Monday Presentation'}
             </span>
           </div>
 
@@ -90,66 +90,46 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         {/* Slide Main Stage */}
         <div className="relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full max-w-5xl mx-auto py-2">
 
-          {/* ======================= 1. COVER SLIDE ======================= */}
-          {slide.category === 'cover' && (
-            <div className="text-center space-y-6 max-w-4xl mx-auto my-auto">
-              <motion.h1 
-                initial={{ y: -24, opacity: 0, scale: 0.95 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black tracking-widest text-slate-950 uppercase drop-shadow-xs"
-              >
-                {slide.title}
-              </motion.h1>
-
+          {/* ======================= 1. GUESS THE TOPIC: CLUE 1 (COLORS ONLY) ======================= */}
+          {slide.id === 1 && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-full h-full flex items-center justify-center my-auto py-2 sm:py-4"
+            >
               <motion.div 
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="w-28 h-0.5 bg-slate-400 mx-auto"
-              />
-
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="text-lg sm:text-2xl md:text-3xl font-canva-serif tracking-wider text-slate-700 uppercase font-semibold max-w-2xl mx-auto leading-relaxed"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.015 }}
+                className="w-full max-w-4xl h-[380px] sm:h-[450px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-row cursor-pointer"
               >
-                {slide.subtitle}
-              </motion.p>
-            </div>
+                <div className="w-1/2 h-full bg-[#676767]" />
+                <div className="w-1/2 h-full bg-[#4B4B4B]" />
+              </motion.div>
+            </motion.div>
           )}
 
-          {/* ======================= 2. OUTLINE SLIDE ======================= */}
-          {slide.category === 'agenda' && (
-            <div className="w-full max-w-3xl mx-auto space-y-8 my-auto text-center">
-              <motion.h2 
-                initial={{ y: -20, opacity: 0, scale: 0.95 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-5xl sm:text-6xl md:text-7xl font-canva-serif font-black uppercase tracking-widest text-slate-950"
+          {/* ======================= 2. GUESS THE TOPIC: CLUE 2 (COLORS ONLY) ======================= */}
+          {slide.id === 2 && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-full h-full flex items-center justify-center my-auto py-2 sm:py-4"
+            >
+              <motion.div 
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.015 }}
+                className="w-full max-w-4xl h-[380px] sm:h-[450px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-row cursor-pointer"
               >
-                {slide.title}
-              </motion.h2>
-
-              <div className="space-y-4 max-w-xl mx-auto text-left pt-2">
-                {slide.bullets?.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ x: -25, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.18 + idx * 0.12, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ x: 8, scale: 1.02 }}
-                    className="flex items-center gap-5 text-lg sm:text-2xl font-sans font-semibold text-slate-800 p-3 rounded-xl hover:bg-white/70 transition cursor-pointer"
-                  >
-                    <span className="font-canva-serif font-bold text-slate-400 text-xl sm:text-2xl w-8">
-                      0{idx + 1}
-                    </span>
-                    <span>{item.replace(/^\d+\.\s*/, '')}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                <div className="w-1/2 h-full bg-[#FF1616]" />
+                <div className="w-1/2 h-full bg-[#004AAD]" />
+              </motion.div>
+            </motion.div>
           )}
 
           {/* ======================= 3. SECTION 01: COLORS IN OUR LIVES ======================= */}
@@ -1198,7 +1178,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
         {/* Subtle Canva Bottom Footer */}
         <div className="relative z-10 flex items-center justify-between text-[11px] text-slate-400 font-medium border-t border-slate-200/50 pt-2.5 mt-2">
-          <span>Monday Presentation • Colors</span>
+          <span>{slide.id <= 2 ? 'Monday Presentation' : 'Monday Presentation • Colors'}</span>
           <span className="font-mono">Slide {slide.id} of 21</span>
         </div>
       </div>

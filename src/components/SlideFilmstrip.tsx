@@ -25,8 +25,14 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
     }
   }, [currentSlideIndex]);
 
-  const getCategoryBadge = (category: SlideData['category'], isDark: boolean) => {
-    switch (category) {
+  const getCategoryBadge = (slide: SlideData, isDark: boolean) => {
+    if (slide.id === 1) {
+      return <span className="text-[8px] font-extrabold text-slate-700 bg-slate-200 px-1.5 py-0.5 rounded">CLUE 1</span>;
+    }
+    if (slide.id === 2) {
+      return <span className="text-[8px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">CLUE 2</span>;
+    }
+    switch (slide.category) {
       case 'cover':
         return <span className="text-[8px] font-extrabold text-amber-300 bg-amber-950/80 border border-amber-800/60 px-1.5 py-0.5 rounded">KEYNOTE</span>;
       case 'agenda':
@@ -95,7 +101,7 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
               >
                 {/* Top mini banner */}
                 <div className="flex items-center justify-between gap-1">
-                  {getCategoryBadge(slide.category, isDarkSlide)}
+                  {getCategoryBadge(slide, isDarkSlide)}
                   <span 
                     className="w-2 h-2 rounded-full shadow-xs" 
                     style={{ backgroundColor: slide.colorHex || (isDarkSlide ? '#F59E0B' : '#3B82F6') }} 
@@ -103,7 +109,7 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
                 </div>
 
                 {/* Content preview: Canva image preview or styled title */}
-                {slide.id >= 3 && slide.canvaImage ? (
+                {slide.canvaImage ? (
                   <div className="my-auto w-full h-full flex items-center justify-center overflow-hidden py-0.5">
                     <img 
                       src={slide.canvaImage} 
