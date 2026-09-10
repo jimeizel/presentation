@@ -102,34 +102,35 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
                   />
                 </div>
 
-                {/* Content title preview */}
-                <div className="my-auto text-center px-1">
-                  <div 
-                    className={`font-black text-[11px] leading-tight line-clamp-1 font-['Oswald'] uppercase tracking-tight ${
-                      isDarkSlide ? 'text-white' : 'text-slate-900'
-                    }`}
-                    style={!isDarkSlide && slide.colorHex && slide.category === 'primary-detail' ? { color: slide.colorHex } : undefined}
-                  >
-                    {slide.title}
+                {/* Content preview: Canva image preview or styled title */}
+                {slide.id >= 3 && slide.canvaImage ? (
+                  <div className="my-auto w-full h-full flex items-center justify-center overflow-hidden py-0.5">
+                    <img 
+                      src={slide.canvaImage} 
+                      alt={slide.title} 
+                      className="max-h-full max-w-full object-contain rounded"
+                    />
                   </div>
-                  {slide.subtitle && (
-                    <div className={`text-[8.5px] line-clamp-1 mt-0.5 ${
-                      isDarkSlide ? 'text-slate-400' : 'text-slate-500'
-                    }`}>
-                      {slide.subtitle}
+                ) : (
+                  <div className="my-auto text-center px-1">
+                    <div 
+                      className="font-black text-[10px] leading-tight line-clamp-2 font-canva-serif uppercase tracking-tight text-slate-900"
+                      style={slide.colorHex && slide.category === 'primary-detail' ? { color: slide.colorHex } : undefined}
+                    >
+                      {slide.title}
                     </div>
-                  )}
-                  {slide.quiz?.statement && (
-                    <div className="text-[8.5px] text-slate-500 line-clamp-1 italic mt-0.5">
-                      "{slide.quiz.statement}"
-                    </div>
-                  )}
-                </div>
+                    {slide.subtitle && (
+                      <div className="text-[8px] line-clamp-1 mt-0.5 text-slate-500 font-canva-serif">
+                        {slide.subtitle}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Bottom mini decor indicator */}
                 <div 
                   className="h-1 w-full rounded-full mt-1 opacity-80" 
-                  style={{ backgroundColor: slide.colorHex || (isDarkSlide ? '#F59E0B' : '#E2E8F0') }} 
+                  style={{ backgroundColor: slide.colorHex || '#E2E8F0' }} 
                 />
               </div>
             </div>

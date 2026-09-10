@@ -65,6 +65,7 @@ export interface SlideData {
   wavelengthNm?: string;
   scientificCitation?: string;
   takeaway?: string;
+  canvaImage?: string;
   speakerNotes: string;
   animations: SlideElementAnimation[];
   transition: TransitionType;
