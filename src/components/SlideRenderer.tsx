@@ -160,109 +160,321 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 4. PRIMARY COLORS ======================= */}
           {slide.id === 4 && (
-            <div className="text-center space-y-8 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center space-y-8">
               <motion.h2 
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-4xl sm:text-6xl md:text-7xl font-canva-serif font-black uppercase tracking-widest text-slate-950"
+                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-slate-950 text-center"
               >
                 {slide.title}
               </motion.h2>
 
-              {/* Authentic Canva Paint Swatches */}
-              <motion.div 
-                initial={{ scale: 0.85, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="flex items-center justify-center pt-2"
-              >
-                <img 
-                  src="/assets/canva/slide_04.png" 
-                  alt="Primary Colors: Red, Blue, Yellow paint swatches" 
-                  className="max-h-64 sm:max-h-80 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              {/* 3 Large Paint Swatches */}
+              <div className="grid grid-cols-3 gap-6 sm:gap-10 w-full max-w-4xl items-center justify-center pt-2">
+                {/* Red Swatch */}
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center group cursor-default"
+                >
+                  <div className="w-28 h-28 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-tr from-[#991B1B] via-[#DC2626] to-[#EF4444] shadow-xl flex items-center justify-center border-4 border-white/90 group-hover:scale-105 transition-transform">
+                    <span className="text-white font-canva-serif font-black text-xl sm:text-3xl tracking-widest uppercase drop-shadow-md">
+                      RED
+                    </span>
+                  </div>
+                </motion.div>
+
+                {/* Blue Swatch */}
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center group cursor-default"
+                >
+                  <div className="w-28 h-28 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-tr from-[#1E40AF] via-[#2563EB] to-[#60A5FA] shadow-xl flex items-center justify-center border-4 border-white/90 group-hover:scale-105 transition-transform">
+                    <span className="text-white font-canva-serif font-black text-xl sm:text-3xl tracking-widest uppercase drop-shadow-md">
+                      BLUE
+                    </span>
+                  </div>
+                </motion.div>
+
+                {/* Yellow Swatch (with real paint texture) */}
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.35 }}
+                  className="flex flex-col items-center group cursor-default"
+                >
+                  <div className="w-28 h-28 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-tr from-[#D97706] via-[#F59E0B] to-[#FDE047] shadow-xl flex items-center justify-center border-4 border-white/90 group-hover:scale-105 transition-transform overflow-hidden relative">
+                    <img 
+                      src="/assets/canva/elements/asset_02_1450x927.png" 
+                      alt="Yellow paint" 
+                      className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-75"
+                    />
+                    <span className="relative z-10 text-slate-950 font-canva-serif font-black text-xl sm:text-3xl tracking-widest uppercase drop-shadow-sm">
+                      YELLOW
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 5. RED ======================= */}
           {slide.id === 5 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
+              {/* Massive Bold Red Title */}
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-[#D40000]"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#D40000] mb-8 sm:mb-12"
               >
-                {slide.title}
+                RED
               </motion.h2>
 
-              {/* Exact Canva Slide 5 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_05.png" 
-                  alt="Red: energy and appetite" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              {/* Two Big Columns spanning the slide */}
+              <div className="grid grid-cols-2 gap-10 md:gap-20 w-full items-center">
+                {/* Left Column: energy. */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: Flame + Best Seller Stamp */}
+                  <div className="flex items-center justify-center gap-6">
+                    <svg className="w-16 h-16 sm:w-20 sm:h-20 drop-shadow-md hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2C8.5 7 6 9.5 6 13.5C6 16.5 8.2 19 11.2 19.4C10.5 18.5 10.1 17.4 10.1 16.2C10.1 13.2 12.2 11 13 9C14.2 11.8 17 13.5 17 16.5C17 17.5 16.6 18.4 16 19.1C18.4 18 20 15.5 20 12.5C20 8.5 16 6 12 2Z" fill="url(#flameGradRed)" />
+                      <path d="M12 11C10.5 13 9.5 14.5 9.5 16.5C9.5 18 10.5 19 12 19.5C13.5 19 14.5 18 14.5 16.5C14.5 14.5 13.5 13 12 11Z" fill="#FDE047" />
+                      <defs>
+                        <linearGradient id="flameGradRed" x1="12" y1="2" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#FF3B30" />
+                          <stop offset="0.7" stopColor="#FF9500" />
+                          <stop offset="1" stopColor="#FFCC00" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+
+                    {/* Authentic Best Seller Stamp */}
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[3px] border-dashed border-red-600 flex flex-col items-center justify-center -rotate-12 bg-red-50/60 p-1 shadow-sm hover:rotate-0 transition-transform">
+                      <span className="text-[9px] sm:text-[10px] tracking-widest text-red-600 font-bold">★ ★ ★</span>
+                      <span className="text-[11px] sm:text-[13px] font-black tracking-wider text-red-600 uppercase border-y-2 border-red-600 px-1 py-0.5 my-0.5">
+                        BEST SELLER
+                      </span>
+                      <span className="text-[8px] tracking-widest text-red-600 font-bold">TOP RATED</span>
+                    </div>
+                  </div>
+
+                  {/* Center: energy. */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      energy.
+                    </h3>
+                  </div>
+
+                  {/* Bottom: Authentic 3D SALE sticker */}
+                  <div className="pt-2">
+                    <img 
+                      src="/assets/canva/elements/asset_06_525x350.png" 
+                      alt="SALE SALE SALE" 
+                      className="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-xl -rotate-6 hover:scale-105 transition-transform"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Right Column: appetite */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: KFC Logo */}
+                  <div className="h-16 sm:h-20 flex items-center justify-center">
+                    <img 
+                      src="/assets/canva/elements/asset_04_2400x1350.png" 
+                      alt="KFC" 
+                      className="h-full w-auto object-contain drop-shadow-md hover:scale-105 transition-transform"
+                    />
+                  </div>
+
+                  {/* Center: appetite */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      appetite
+                    </h3>
+                  </div>
+
+                  {/* Bottom: Jollibee + Pizza Hut Logos */}
+                  <div className="flex items-center justify-center gap-6 sm:gap-8 pt-2">
+                    <img 
+                      src="/assets/canva/elements/asset_03_2400x1600.png" 
+                      alt="Jollibee" 
+                      className="h-16 sm:h-20 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform"
+                    />
+                    <img 
+                      src="/assets/canva/elements/asset_05_2400x1350.png" 
+                      alt="Pizza Hut" 
+                      className="h-16 sm:h-20 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform"
+                    />
+                  </div>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 6. BLUE ======================= */}
           {slide.id === 6 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
+              {/* Title BLUE */}
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-[#0047AB]"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#0047AB] mb-8 sm:mb-12"
               >
-                {slide.title}
+                BLUE
               </motion.h2>
 
-              {/* Exact Canva Slide 6 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_06.png" 
-                  alt="Blue: peace and stability" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              <div className="grid grid-cols-2 gap-10 md:gap-20 w-full items-center">
+                {/* Left Column: peace. */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: Handshake photo */}
+                  <div className="h-20 sm:h-24 w-36 sm:w-44 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 hover:scale-105 transition-transform">
+                    <img 
+                      src="/assets/photos/handshake.jpg" 
+                      alt="Peace & Agreement" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Center: peace. */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      peace
+                    </h3>
+                  </div>
+
+                  {/* Bottom: Ocean Waves + Earth Globe */}
+                  <div className="flex items-center justify-center gap-4 pt-1">
+                    <div className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white">
+                      <img src="/assets/photos/ocean.jpg" alt="Ocean" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shadow-md border border-white">
+                      <img src="/assets/photos/earth.jpg" alt="Earth" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Right Column: stability. */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: LinkedIn Badge */}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#0A66C2] flex items-center justify-center shadow-lg text-white font-bold text-3xl font-sans hover:scale-105 transition-transform">
+                    in
+                  </div>
+
+                  {/* Center: stability. */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      stability.
+                    </h3>
+                  </div>
+
+                  {/* Bottom: Doctor in Scrubs + Facebook */}
+                  <div className="flex items-center justify-center gap-4 pt-1">
+                    <div className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white">
+                      <img src="/assets/photos/doctor.jpg" alt="Healthcare Doctor" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#1877F2] flex items-center justify-center shadow-lg text-white font-black text-3xl font-sans hover:scale-105 transition-transform">
+                      f
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 7. YELLOW ======================= */}
           {slide.id === 7 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
+              {/* Title YELLOW */}
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-[#D97706]"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#D97706] mb-8 sm:mb-12"
               >
-                {slide.title}
+                YELLOW
               </motion.h2>
 
-              {/* Exact Canva Slide 7 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_07.png" 
-                  alt="Yellow: warmth and attention" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              <div className="grid grid-cols-2 gap-10 md:gap-20 w-full items-center">
+                {/* Left Column: warmth */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: Glowing Sun */}
+                  <div className="h-20 sm:h-24 w-36 sm:w-44 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 hover:scale-105 transition-transform">
+                    <img 
+                      src="/assets/photos/sun.jpg" 
+                      alt="Warm Glowing Sun" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Center: warmth */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      warmth
+                    </h3>
+                  </div>
+
+                  {/* Bottom: Incandescent Lightbulb */}
+                  <div className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white">
+                    <img src="/assets/photos/lightbulb.jpg" alt="Lightbulb" className="w-full h-full object-cover" />
+                  </div>
+                </motion.div>
+
+                {/* Right Column: attention */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-6"
+                >
+                  {/* Top: Pedestrian Crossing Road Sign */}
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-400 rotate-45 rounded-lg border-2 border-black flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+                    <span className="-rotate-45 text-2xl sm:text-3xl">🚸</span>
+                  </div>
+
+                  {/* Center: attention */}
+                  <div>
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900 underline decoration-[5px] decoration-slate-900 underline-offset-8">
+                      attention
+                    </h3>
+                  </div>
+
+                  {/* Bottom: 😂 Emoji + School bus + Caution banner */}
+                  <div className="flex items-center justify-center gap-4 pt-1">
+                    <span className="text-4xl sm:text-5xl hover:scale-110 transition-transform">😂</span>
+                    <span className="text-4xl sm:text-5xl hover:scale-110 transition-transform">🚌</span>
+                    <div className="bg-amber-300 border-2 border-black px-3 py-1 font-black text-black text-xs sm:text-sm tracking-wider uppercase shadow-md -rotate-3">
+                      CAUTION
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           )}
 
@@ -282,88 +494,176 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 9. WHITE (WEST vs ASIA) ======================= */}
           {slide.id === 9 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-slate-950"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-slate-900 mb-8 sm:mb-12"
               >
-                {slide.title}
+                WHITE
               </motion.h2>
 
-              {/* Exact Canva Slide 9 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_09.png" 
-                  alt="White: West vs Asia" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
+                {/* Left Column: WEST */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    WEST
+                  </h3>
+                  <div className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:scale-[1.02] transition-transform">
+                    <img src="/assets/photos/bride.jpg" alt="West Wedding" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Weddings, Purity & Peace
+                  </span>
+                </motion.div>
+
+                {/* Right Column: ASIA */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    ASIA
+                  </h3>
+                  <div className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:scale-[1.02] transition-transform">
+                    <img src="/assets/canva/elements/asset_07_850x564.png" alt="Asia Mourning" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Funerals, Mourning & Rebirth
+                  </span>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 10. BLACK (U.S.A. vs AFRICA) ======================= */}
           {slide.id === 10 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-slate-950"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-slate-950 mb-8 sm:mb-12"
               >
-                {slide.title}
+                BLACK
               </motion.h2>
 
-              {/* Exact Canva Slide 10 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_10.png" 
-                  alt="Black: U.S.A. vs Africa" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
+                {/* Left Column: U.S.A. */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    U.S.A.
+                  </h3>
+                  <div className="flex flex-col gap-3 w-full max-w-sm">
+                    <div className="h-32 sm:h-36 rounded-xl overflow-hidden shadow-lg border border-slate-200">
+                      <img src="/assets/canva/elements/asset_08_390x280.png" alt="USA Judge" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="h-32 sm:h-36 rounded-xl overflow-hidden shadow-lg border border-slate-200">
+                      <img src="/assets/photos/black_car.jpg" alt="Black Sports Car" className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Authority, Judiciary & Elegance
+                  </span>
+                </motion.div>
+
+                {/* Right Column: AFRICA */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    AFRICA
+                  </h3>
+                  <div className="flex flex-col gap-3 w-full max-w-sm items-center">
+                    <div className="h-44 sm:h-48 w-full rounded-xl overflow-hidden shadow-lg border border-slate-200">
+                      <img src="/assets/photos/muscular.jpg" alt="Strength & Masculinity" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="h-20 sm:h-24 w-full rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-slate-950">
+                      <img src="/assets/canva/elements/asset_09_447x447.png" alt="Mature" className="h-full w-auto object-contain" />
+                    </div>
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Strength, Maturity & Seniority
+                  </span>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 11. GREEN (ISLAMIC vs IRISH) ======================= */}
           {slide.id === 11 && (
-            <div className="text-center space-y-4 my-auto w-full max-w-4xl mx-auto">
+            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
               <motion.h2 
-                initial={{ y: -15, opacity: 0 }}
+                initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-5xl sm:text-7xl md:text-8xl font-canva-serif font-black uppercase tracking-widest text-[#15803D]"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#15803D] mb-8 sm:mb-12"
               >
-                {slide.title}
+                GREEN
               </motion.h2>
 
-              {/* Exact Canva Slide 11 Composition */}
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center justify-center pt-1"
-              >
-                <img 
-                  src="/assets/canva/slide_11.png" 
-                  alt="Green: Islamic vs Irish" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-md rounded-xl"
-                />
-              </motion.div>
+              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
+                {/* Left Column: ISLAMIC */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    ISLAMIC
+                  </h3>
+                  <div className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:scale-[1.02] transition-transform">
+                    <img src="/assets/canva/elements/asset_10_640x819.png" alt="Islamic Green Dome" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Paradise, Spirituality & Nature
+                  </span>
+                </motion.div>
+
+                {/* Right Column: IRISH */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25 }}
+                  className="flex flex-col items-center text-center space-y-4"
+                >
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
+                    IRISH
+                  </h3>
+                  <div className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-900 p-8 flex flex-col items-center justify-center text-white border border-emerald-500 hover:scale-[1.02] transition-transform">
+                    <span className="text-6xl sm:text-7xl mb-4 filter drop-shadow-md">☘️</span>
+                    <span className="text-xl sm:text-2xl font-canva-serif font-bold tracking-wider text-amber-200 uppercase">
+                      St. Patrick
+                    </span>
+                    <span className="text-sm font-sans text-emerald-100 font-semibold tracking-widest mt-1">
+                      Heritage & Luck
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
+                    Good Luck, Spring & Heritage
+                  </span>
+                </motion.div>
+              </div>
             </div>
           )}
 
           {/* ======================= 12. FAKE OR REAL INTRO ======================= */}
           {slide.id === 12 && (
-            <div className="text-center space-y-6 my-auto w-full max-w-4xl mx-auto">
+            <div className="text-center space-y-8 my-auto w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
               <motion.h2 
                 initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -374,7 +674,6 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 <span className="text-emerald-600">REAL</span>
               </motion.h2>
 
-              {/* Exact Canva Questioning Cartoon */}
               <motion.div 
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -384,7 +683,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 <img 
                   src="/assets/canva/slide_12.png" 
                   alt="Fake or Real presenter" 
-                  className="max-h-60 sm:max-h-72 w-auto object-contain drop-shadow-sm rounded-xl"
+                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-lg rounded-2xl"
                 />
               </motion.div>
             </div>
@@ -492,18 +791,18 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 21. CONCLUSION: THANK YOU! ======================= */}
           {slide.category === 'conclusion' && (
-            <div className="text-center space-y-6 my-auto w-full max-w-4xl mx-auto">
-              {/* Authentic Canva 3D Thank You Graphic */}
+            <div className="text-center space-y-8 my-auto w-full max-w-5xl mx-auto flex flex-col items-center justify-center">
+              {/* Ultra High-Res Authentic Canva 3D Thank You Graphic */}
               <motion.div 
-                initial={{ scale: 0.8, opacity: 0 }}
+                initial={{ scale: 0.7, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: 'spring', damping: 16, stiffness: 200 }}
-                className="flex items-center justify-center"
+                transition={{ type: 'spring', damping: 14, stiffness: 180 }}
+                className="w-full flex justify-center py-4"
               >
                 <img 
-                  src="/assets/canva/slide_21.png" 
+                  src="/assets/canva/elements/asset_11_1875x480.png" 
                   alt="Thank you!" 
-                  className="max-h-64 sm:max-h-80 md:max-h-96 w-auto object-contain drop-shadow-lg"
+                  className="max-h-56 sm:max-h-72 md:max-h-80 w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform"
                 />
               </motion.div>
 
@@ -511,7 +810,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-base sm:text-xl font-canva-serif text-slate-600 italic"
+                className="text-lg sm:text-2xl font-canva-serif text-slate-600 font-semibold tracking-wider uppercase"
               >
                 {slide.subtitle}
               </motion.p>
