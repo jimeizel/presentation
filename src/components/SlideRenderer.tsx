@@ -90,46 +90,252 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         {/* Slide Main Stage */}
         <div className="relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full max-w-5xl mx-auto py-2">
 
-          {/* ======================= 1. GUESS THE TOPIC: CLUE 1 (COLORS ONLY) ======================= */}
+          {/* ======================= 1. GUESS THE TOPIC: ANIMATED COLOR CONSTELLATION ======================= */}
           {slide.id === 1 && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="w-full h-full flex items-center justify-center my-auto py-2 sm:py-4"
-            >
+            <div className="w-full h-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-between py-2 sm:py-4 relative">
+              {/* Top Mystery Question */}
               <motion.div 
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.015 }}
-                className="w-full max-w-4xl h-[380px] sm:h-[450px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-row cursor-pointer"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center z-20 space-y-1.5"
               >
-                <div className="w-1/2 h-full bg-[#676767]" />
-                <div className="w-1/2 h-full bg-[#4B4B4B]" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 border border-slate-900/10 text-xs font-semibold tracking-wider text-slate-700 uppercase mb-0.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-spin" style={{ animationDuration: '8s' }} />
+                  <span>Audience Challenge</span>
+                </div>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-canva-serif font-black tracking-wider text-slate-950 uppercase">
+                  Guess The Topic
+                </h1>
+                <p className="text-xs sm:text-base font-canva-serif tracking-widest text-slate-500 uppercase font-semibold">
+                  Tap or click any orb for a musical clue
+                </p>
               </motion.div>
-            </motion.div>
+
+              {/* Dynamic Floating Color Constellation Stage */}
+              <div className="relative w-full flex-1 min-h-[300px] sm:min-h-[380px] md:min-h-[420px] flex items-center justify-center my-2">
+                {/* Ambient Center Glow */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.15, 1],
+                    opacity: [0.35, 0.6, 0.35]
+                  }}
+                  transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                  className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-rose-200/40 via-sky-200/40 to-amber-200/40 filter blur-3xl pointer-events-none"
+                />
+
+                {/* Center Mystery Hub */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -30 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.2, type: 'spring', damping: 14, stiffness: 200 }}
+                  onClick={() => {
+                    soundEngine.playSuccessChime();
+                    try {
+                      confetti({
+                        particleCount: 50,
+                        spread: 70,
+                        origin: { y: 0.55 },
+                        colors: ['#EF4444', '#3B82F6', '#F59E0B', '#10B981', '#8B5CF6', '#EC4899']
+                      });
+                    } catch {}
+                  }}
+                  whileHover={{ scale: 1.12, rotate: 5 }}
+                  whileTap={{ scale: 0.94 }}
+                  className="relative z-20 cursor-pointer group flex flex-col items-center justify-center"
+                  title="Click for a celebratory hint!"
+                >
+                  {/* Rotating Dashed Orbital Track */}
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
+                    className="absolute -inset-4 sm:-inset-6 rounded-full border-2 border-dashed border-slate-300/80 pointer-events-none"
+                  />
+
+                  {/* Core Glass Sphere */}
+                  <div className="w-22 h-22 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white flex flex-col items-center justify-center shadow-2xl border-4 border-white/90 group-hover:border-amber-400/90 transition-colors">
+                    <span className="font-canva-serif font-black text-4xl sm:text-5xl md:text-6xl text-white drop-shadow-md group-hover:text-amber-300 transition-colors">
+                      ?
+                    </span>
+                    <span className="text-[8px] sm:text-[10px] font-sans font-bold tracking-widest text-slate-400 uppercase group-hover:text-white transition-colors">
+                      WHAT IS IT?
+                    </span>
+                  </div>
+                </motion.div>
+
+                {/* Floating Interactive Color Orbs */}
+                {[
+                  { id: 'red', name: 'Crimson', grad: 'from-[#FF3B30] via-[#E11D48] to-[#991B1B]', glow: 'shadow-red-500/35', size: 'w-18 h-18 sm:w-24 sm:h-24 md:w-28 md:h-28', pos: '-top-2 sm:-top-4 left-[6%] sm:left-[12%]', dur: 3.2, delay: 0.1, freq: 261.63 },
+                  { id: 'blue', name: 'Azure', grad: 'from-[#007AFF] via-[#2563EB] to-[#1E3A8A]', glow: 'shadow-blue-500/35', size: 'w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32', pos: '-top-1 sm:-top-3 right-[6%] sm:right-[12%]', dur: 3.8, delay: 0.25, freq: 392.00 },
+                  { id: 'yellow', name: 'Amber', grad: 'from-[#FACC15] via-[#F59E0B] to-[#D97706]', glow: 'shadow-amber-500/35', size: 'w-18 h-18 sm:w-24 sm:h-24 md:w-28 md:h-28', pos: 'top-1/2 -translate-y-1/2 left-[2%] sm:left-[6%]', dur: 3.5, delay: 0.4, freq: 329.63 },
+                  { id: 'green', name: 'Emerald', grad: 'from-[#34D399] via-[#10B981] to-[#047857]', glow: 'shadow-emerald-500/35', size: 'w-18 h-18 sm:w-24 sm:h-24 md:w-28 md:h-28', pos: 'top-1/2 -translate-y-1/2 right-[2%] sm:right-[6%]', dur: 4.1, delay: 0.35, freq: 349.23 },
+                  { id: 'purple', name: 'Violet', grad: 'from-[#A855F7] via-[#7C3AED] to-[#581C87]', glow: 'shadow-purple-500/35', size: 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24', pos: '-bottom-3 sm:-bottom-4 left-[14%] sm:left-[22%]', dur: 3.6, delay: 0.5, freq: 440.00 },
+                  { id: 'pink', name: 'Rose', grad: 'from-[#F472B6] via-[#EC4899] to-[#BE185D]', glow: 'shadow-pink-500/35', size: 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24', pos: '-bottom-3 sm:-bottom-4 right-[14%] sm:right-[22%]', dur: 4.3, delay: 0.6, freq: 493.88 },
+                  { id: 'orange', name: 'Tangerine', grad: 'from-[#FB923C] via-[#F97316] to-[#C2410C]', glow: 'shadow-orange-500/35', size: 'w-14 h-14 sm:w-18 sm:h-18 md:w-22 md:h-22', pos: 'top-1 sm:top-2 left-1/2 -translate-x-1/2', dur: 3.0, delay: 0.2, freq: 293.66 },
+                ].map((orb) => (
+                  <motion.div
+                    key={orb.id}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ 
+                      scale: 1, 
+                      opacity: 1,
+                      y: [0, -10, 0, 7, 0],
+                      x: [0, 4, 0, -4, 0]
+                    }}
+                    transition={{ 
+                      scale: { delay: orb.delay, type: 'spring', damping: 12, stiffness: 200 },
+                      opacity: { delay: orb.delay, duration: 0.4 },
+                      y: { repeat: Infinity, duration: orb.dur, ease: 'easeInOut', delay: orb.delay * 2 },
+                      x: { repeat: Infinity, duration: orb.dur * 1.2, ease: 'easeInOut', delay: orb.delay }
+                    }}
+                    whileHover={{ scale: 1.22, rotate: 8 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => soundEngine.playTone(orb.freq)}
+                    className={`absolute ${orb.pos} ${orb.size} rounded-full bg-gradient-to-tr ${orb.grad} shadow-xl ${orb.glow} border-3 border-white/90 cursor-pointer z-10 flex items-center justify-center select-none group transition-shadow`}
+                    title={`Click to hear ${orb.name}!`}
+                  >
+                    {/* Glossy 3D Sphere Specular Highlight */}
+                    <div className="absolute top-2 left-3 w-4 h-2.5 sm:w-6 sm:h-4 bg-white/50 rounded-full blur-[1px] rotate-[-25deg] pointer-events-none" />
+                    
+                    {/* Subtle Musical Note Icon on Hover */}
+                    <span className="opacity-0 group-hover:opacity-90 text-white font-bold text-xs sm:text-sm drop-shadow-md transition-opacity">
+                      ♪
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Bottom Subtle Hint */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="text-xs font-sans text-slate-400 font-medium tracking-wider uppercase text-center z-20 pt-1"
+              >
+                Clue 1 of 2 • What is the underlying theme?
+              </motion.div>
+            </div>
           )}
 
-          {/* ======================= 2. GUESS THE TOPIC: CLUE 2 (COLORS ONLY) ======================= */}
+          {/* ======================= 2. GUESS THE TOPIC: CLUE 2 (THE DUAL CLASH) ======================= */}
           {slide.id === 2 && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="w-full h-full flex items-center justify-center my-auto py-2 sm:py-4"
-            >
+            <div className="w-full h-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-between py-2 sm:py-4 relative">
+              {/* Header */}
               <motion.div 
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.015 }}
-                className="w-full max-w-4xl h-[380px] sm:h-[450px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-row cursor-pointer"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center z-20 space-y-1.5"
               >
-                <div className="w-1/2 h-full bg-[#FF1616]" />
-                <div className="w-1/2 h-full bg-[#004AAD]" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 border border-slate-900/10 text-xs font-semibold tracking-wider text-slate-700 uppercase mb-0.5">
+                  <span>Clue #2</span>
+                </div>
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-canva-serif font-black tracking-wider text-slate-950 uppercase">
+                  Two Elemental Forces
+                </h2>
+                <p className="text-xs sm:text-base font-canva-serif tracking-widest text-slate-500 uppercase font-semibold">
+                  What connects these two sides?
+                </p>
               </motion.div>
-            </motion.div>
+
+              {/* Two Massive Animated Interactive Color Monoliths */}
+              <div className="grid grid-cols-2 gap-6 sm:gap-12 w-full max-w-4xl my-auto items-center justify-center relative py-2 sm:py-4">
+                {/* Center Floating VS Badge */}
+                <motion.div 
+                  initial={{ scale: 0, rotate: -20 }}
+                  animate={{ 
+                    scale: 1, 
+                    rotate: 0,
+                    y: [0, -6, 0]
+                  }}
+                  transition={{ 
+                    scale: { delay: 0.3, type: 'spring', damping: 14, stiffness: 220 },
+                    y: { repeat: Infinity, duration: 2.8, ease: 'easeInOut' }
+                  }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-slate-950 text-white font-canva-serif font-black text-base sm:text-xl flex items-center justify-center shadow-2xl border-4 border-white"
+                >
+                  VS
+                </motion.div>
+
+                {/* Left Card: Red Pillar */}
+                <motion.div 
+                  initial={{ x: -60, opacity: 0 }}
+                  animate={{ 
+                    x: 0, 
+                    opacity: 1,
+                    y: [0, -6, 0]
+                  }}
+                  transition={{ 
+                    x: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                    opacity: { duration: 0.6 },
+                    y: { repeat: Infinity, duration: 3.4, ease: 'easeInOut', delay: 0.4 }
+                  }}
+                  whileHover={{ scale: 1.04, rotate: -1 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => soundEngine.playTone(261.63)}
+                  className="h-56 sm:h-72 md:h-80 rounded-3xl bg-gradient-to-br from-[#FF3B30] via-[#DC2626] to-[#991B1B] shadow-2xl shadow-red-500/30 border-4 border-white flex flex-col items-center justify-center p-6 cursor-pointer relative overflow-hidden group"
+                >
+                  <div className="absolute top-4 left-6 w-16 h-8 bg-white/30 rounded-full blur-[2px] rotate-[-20deg] pointer-events-none" />
+                  <motion.div 
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                    className="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-white/20 backdrop-blur-xs flex items-center justify-center mb-3 shadow-inner"
+                  >
+                    <Flame className="w-7 h-7 sm:w-9 sm:h-9 text-white" />
+                  </motion.div>
+                  <span className="text-white font-canva-serif font-black text-xl sm:text-3xl tracking-widest uppercase drop-shadow-md">
+                    WARMTH & FIRE
+                  </span>
+                  <span className="text-white/80 font-sans text-[10px] sm:text-xs font-semibold tracking-wider uppercase mt-1">
+                    Click to hear
+                  </span>
+                </motion.div>
+
+                {/* Right Card: Blue Pillar */}
+                <motion.div 
+                  initial={{ x: 60, opacity: 0 }}
+                  animate={{ 
+                    x: 0, 
+                    opacity: 1,
+                    y: [0, -6, 0]
+                  }}
+                  transition={{ 
+                    x: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                    opacity: { duration: 0.6 },
+                    y: { repeat: Infinity, duration: 3.6, ease: 'easeInOut', delay: 0.7 }
+                  }}
+                  whileHover={{ scale: 1.04, rotate: 1 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => soundEngine.playTone(392.00)}
+                  className="h-56 sm:h-72 md:h-80 rounded-3xl bg-gradient-to-br from-[#007AFF] via-[#2563EB] to-[#1E3A8A] shadow-2xl shadow-blue-500/30 border-4 border-white flex flex-col items-center justify-center p-6 cursor-pointer relative overflow-hidden group"
+                >
+                  <div className="absolute top-4 left-6 w-16 h-8 bg-white/30 rounded-full blur-[2px] rotate-[-20deg] pointer-events-none" />
+                  <motion.div 
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ repeat: Infinity, duration: 2.3, ease: 'easeInOut' }}
+                    className="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-white/20 backdrop-blur-xs flex items-center justify-center mb-3 shadow-inner"
+                  >
+                    <Globe2 className="w-7 h-7 sm:w-9 sm:h-9 text-white" />
+                  </motion.div>
+                  <span className="text-white font-canva-serif font-black text-xl sm:text-3xl tracking-widest uppercase drop-shadow-md">
+                    CALM & OCEAN
+                  </span>
+                  <span className="text-white/80 font-sans text-[10px] sm:text-xs font-semibold tracking-wider uppercase mt-1">
+                    Click to hear
+                  </span>
+                </motion.div>
+              </div>
+
+              {/* Bottom Note */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="text-xs font-sans text-slate-400 font-medium tracking-wider uppercase text-center z-20 pt-1"
+              >
+                Next slide reveals the official topic!
+              </motion.div>
+            </div>
           )}
 
           {/* ======================= 3. SECTION 01: COLORS IN OUR LIVES ======================= */}

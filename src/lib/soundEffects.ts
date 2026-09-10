@@ -102,6 +102,31 @@ class PresentationSoundEngine {
     }
   }
 
+  public playTone(freq: number = 440) {
+    const ctx = this.getContext();
+    if (!ctx) return;
+
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+      gain.gain.setValueAtTime(0.09, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.36);
+    } catch {
+      // ignore
+    }
+  }
+
+
   public toggleMute(): boolean {
     this.isMuted = !this.isMuted;
     return this.isMuted;

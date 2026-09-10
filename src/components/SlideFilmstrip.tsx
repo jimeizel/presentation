@@ -109,7 +109,28 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
                 </div>
 
                 {/* Content preview: Canva image preview or styled title */}
-                {slide.canvaImage ? (
+                {slide.id === 1 ? (
+                  <div className="my-auto w-full h-full flex items-center justify-center relative overflow-hidden py-0.5">
+                    <div className="relative w-16 h-11 flex items-center justify-center">
+                      <span className="w-3.5 h-3.5 rounded-full bg-rose-500 absolute -top-0.5 -left-0.5 shadow-2xs animate-pulse" />
+                      <span className="w-4 h-4 rounded-full bg-blue-500 absolute -top-0.5 -right-0.5 shadow-2xs" />
+                      <span className="w-3.5 h-3.5 rounded-full bg-amber-400 absolute -bottom-0.5 -left-0.5 shadow-2xs" />
+                      <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 absolute -bottom-0.5 -right-0.5 shadow-2xs" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-purple-500 absolute top-1/2 -left-2 -translate-y-1/2 shadow-2xs" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-pink-500 absolute top-1/2 -right-2 -translate-y-1/2 shadow-2xs" />
+                      <div className="w-5 h-5 rounded-full bg-slate-950 text-white font-canva-serif font-black text-[9px] flex items-center justify-center z-10 shadow-md border border-white/80">
+                        ?
+                      </div>
+                    </div>
+                  </div>
+                ) : slide.id === 2 ? (
+                  <div className="my-auto w-full h-full flex items-center justify-center overflow-hidden py-1 px-1.5">
+                    <div className="w-full h-9 rounded-lg overflow-hidden flex border border-slate-300 shadow-2xs">
+                      <div className="w-1/2 h-full bg-[#FF1616]" />
+                      <div className="w-1/2 h-full bg-[#004AAD]" />
+                    </div>
+                  </div>
+                ) : slide.canvaImage ? (
                   <div className="my-auto w-full h-full flex items-center justify-center overflow-hidden py-0.5">
                     <img 
                       src={slide.canvaImage} 
