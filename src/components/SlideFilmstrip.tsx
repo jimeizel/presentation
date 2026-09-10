@@ -27,10 +27,10 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
 
   const getCategoryBadge = (slide: SlideData, isDark: boolean) => {
     if (slide.id === 1) {
-      return <span className="text-[8px] font-extrabold text-slate-700 bg-slate-200 px-1.5 py-0.5 rounded">CLUE 1</span>;
+      return <span className="text-[8px] font-extrabold text-slate-700 bg-slate-200 px-1.5 py-0.5 rounded">B&W</span>;
     }
     if (slide.id === 2) {
-      return <span className="text-[8px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">CLUE 2</span>;
+      return <span className="text-[8px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">COLOR</span>;
     }
     switch (slide.category) {
       case 'cover':
@@ -110,17 +110,10 @@ export const SlideFilmstrip: React.FC<SlideFilmstripProps> = ({
 
                 {/* Content preview: Canva image preview or styled title */}
                 {slide.id === 1 ? (
-                  <div className="my-auto w-full h-full flex items-center justify-center relative overflow-hidden py-0.5">
-                    <div className="relative w-16 h-11 flex items-center justify-center">
-                      <span className="w-3.5 h-3.5 rounded-full bg-rose-500 absolute -top-0.5 -left-0.5 shadow-2xs animate-pulse" />
-                      <span className="w-4 h-4 rounded-full bg-blue-500 absolute -top-0.5 -right-0.5 shadow-2xs" />
-                      <span className="w-3.5 h-3.5 rounded-full bg-amber-400 absolute -bottom-0.5 -left-0.5 shadow-2xs" />
-                      <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 absolute -bottom-0.5 -right-0.5 shadow-2xs" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-purple-500 absolute top-1/2 -left-2 -translate-y-1/2 shadow-2xs" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-pink-500 absolute top-1/2 -right-2 -translate-y-1/2 shadow-2xs" />
-                      <div className="w-5 h-5 rounded-full bg-slate-950 text-white font-canva-serif font-black text-[9px] flex items-center justify-center z-10 shadow-md border border-white/80">
-                        ?
-                      </div>
+                  <div className="my-auto w-full h-full flex items-center justify-center overflow-hidden py-1 px-1.5">
+                    <div className="w-full h-9 rounded-lg overflow-hidden flex border border-slate-300 shadow-2xs">
+                      <div className="w-1/2 h-full bg-[#676767]" />
+                      <div className="w-1/2 h-full bg-[#4B4B4B]" />
                     </div>
                   </div>
                 ) : slide.id === 2 ? (

@@ -1,28 +1,28 @@
 import { SlideData } from '../types';
 
 export const SLIDES_DATA: SlideData[] = [
-  // Slide 1: Clue 1 (Colors Only - Audience Guess)
+  // Slide 1: Guess the Color (Black & White - No Text)
   {
     id: 1,
     category: 'cover',
-    title: 'Guess the Topic',
-    subtitle: 'Clue 1',
+    title: 'Guess the Color',
+    subtitle: 'Black & White',
     colorHex: '#676767',
     canvaImage: '/assets/canva/slide_01.png',
-    speakerNotes: 'Good morning everyone! Take a close look at the screen. We’ve kept this slide completely free of text because we have an opening question for you: Can anyone in the audience guess what our topic is today? Call out your guesses!',
+    speakerNotes: 'Good morning everyone! Take a close look at the screen. We have intentionally removed all text and color. Can anyone in the audience guess what color is on the left, and what color is on the right? Call out your guesses!',
     transition: 'fade',
     animations: [],
   },
 
-  // Slide 2: Clue 2 (Colors Only - Red & Blue Clue)
+  // Slide 2: What Do You Think About This Color? (Red & Blue - No Text)
   {
     id: 2,
     category: 'agenda',
-    title: 'Guess the Topic',
-    subtitle: 'Clue 2',
+    title: 'What Do You Think of This Color?',
+    subtitle: 'Red & Blue Revealed',
     colorHex: '#FF1616',
     canvaImage: '/assets/canva/slide_02.png',
-    speakerNotes: 'Here is your second clue! Look at this vibrant contrast between red and blue. What connects these? Any more guesses about our theme today?',
+    speakerNotes: 'Here are the actual colors: Red on the left and Blue on the right! Now that you see them: What do you think about these colors? What emotions, feelings, or thoughts immediately come to your mind?',
     transition: 'slide-left',
     animations: [],
   },
