@@ -1168,23 +1168,29 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 </motion.span>
               </div>
 
+              {/* 3D Quiz Presenter Avatar with Floating Ambient Motion */}
               <motion.div 
-                initial={{ y: 30, opacity: 0 }}
+                initial={{ y: 35, opacity: 0, scale: 0.9 }}
                 animate={{ 
-                  y: [0, -8, 0],
-                  opacity: 1 
+                  y: [0, -10, 0],
+                  opacity: 1,
+                  scale: 1 
                 }}
                 transition={{ 
                   y: { repeat: Infinity, duration: 3.6, ease: 'easeInOut', delay: 0.6 },
-                  opacity: { delay: 0.25, duration: 0.5 }
+                  opacity: { delay: 0.25, duration: 0.5 },
+                  scale: { type: 'spring', damping: 14, stiffness: 180, delay: 0.2 }
                 }}
-                whileHover={{ scale: 1.04 }}
-                className="flex items-center justify-center pt-2 cursor-pointer"
+                whileHover={{ scale: 1.08, rotate: 1.5 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => soundEngine.playSuccessChime()}
+                className="flex items-center justify-center pt-2 cursor-pointer select-none relative group"
+                title="Meet your Quiz Presenter! Click for chime."
               >
                 <img 
-                  src="/assets/canva/slide_12.png" 
-                  alt="Fake or Real presenter" 
-                  className="max-h-72 sm:max-h-84 md:max-h-96 w-auto object-contain drop-shadow-xl rounded-2xl"
+                  src="/assets/canva/elements/fake_real_presenter_3d.png" 
+                  alt="3D Quiz Presenter" 
+                  className="max-h-64 sm:max-h-80 md:max-h-96 w-auto object-contain filter drop-shadow-[0_20px_25px_rgba(0,0,0,0.12)] pointer-events-none"
                 />
               </motion.div>
             </div>
