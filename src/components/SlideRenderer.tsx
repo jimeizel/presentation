@@ -420,7 +420,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 initial={{ y: -28, opacity: 0, scale: 0.92 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#D40000] mb-8 sm:mb-12"
+                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#D40000] mb-4 sm:mb-6"
               >
                 RED
               </motion.h2>
@@ -432,10 +432,10 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                   initial={{ x: -40, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  className="flex flex-col items-center text-center space-y-5 sm:space-y-6"
                 >
                   {/* Top: Flame + Best Seller Stamp */}
-                  <div className="flex items-center justify-center gap-6">
+                  <div className="flex items-center justify-center gap-6 sm:gap-8">
                     <motion.div
                       animate={{ 
                         scale: [1, 1.08, 1],
@@ -449,7 +449,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                       whileHover={{ scale: 1.25, rotate: 8 }}
                       className="cursor-pointer"
                     >
-                      <svg className="w-16 h-16 sm:w-20 sm:h-20 drop-shadow-md" viewBox="0 0 24 24" fill="none">
+                      <svg className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 drop-shadow-lg" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2C8.5 7 6 9.5 6 13.5C6 16.5 8.2 19 11.2 19.4C10.5 18.5 10.1 17.4 10.1 16.2C10.1 13.2 12.2 11 13 9C14.2 11.8 17 13.5 17 16.5C17 17.5 16.6 18.4 16 19.1C18.4 18 20 15.5 20 12.5C20 8.5 16 6 12 2Z" fill="url(#flameGradRed)" />
                         <path d="M12 11C10.5 13 9.5 14.5 9.5 16.5C9.5 18 10.5 19 12 19.5C13.5 19 14.5 18 14.5 16.5C14.5 14.5 13.5 13 12 11Z" fill="#FDE047" />
                         <defs>
@@ -468,13 +468,13 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                       animate={{ scale: 1, opacity: 1, rotate: -12 }}
                       transition={{ delay: 0.28, type: 'spring', damping: 11, stiffness: 220 }}
                       whileHover={{ rotate: 0, scale: 1.12 }}
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[3px] border-dashed border-red-600 flex flex-col items-center justify-center bg-red-50/60 p-1 shadow-sm cursor-pointer"
+                      className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full border-[3px] border-dashed border-red-600 flex flex-col items-center justify-center bg-red-50/70 p-1.5 shadow-md cursor-pointer"
                     >
-                      <span className="text-[9px] sm:text-[10px] tracking-widest text-red-600 font-bold">★ ★ ★</span>
-                      <span className="text-[11px] sm:text-[13px] font-black tracking-wider text-red-600 uppercase border-y-2 border-red-600 px-1 py-0.5 my-0.5">
+                      <span className="text-[11px] sm:text-[13px] tracking-widest text-red-600 font-bold">★ ★ ★</span>
+                      <span className="text-[13px] sm:text-[15px] font-black tracking-wider text-red-600 uppercase border-y-2 border-red-600 px-2 py-0.5 my-0.5">
                         BEST SELLER
                       </span>
-                      <span className="text-[8px] tracking-widest text-red-600 font-bold">TOP RATED</span>
+                      <span className="text-[9px] sm:text-[11px] tracking-widest text-red-600 font-bold">TOP RATED</span>
                     </motion.div>
                   </div>
 
@@ -491,27 +491,27 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                     />
                   </div>
 
-                  {/* Bottom: Authentic 3D SALE sticker with floating & bounce */}
+                  {/* Bottom: Authentic 3D SALE sticker with floating & bounce (Enlarged) */}
                   <motion.div 
                     initial={{ scale: 0.5, opacity: 0, rotate: -20 }}
                     animate={{ 
                       scale: 1, 
                       opacity: 1, 
                       rotate: -6,
-                      y: [0, -5, 0]
+                      y: [0, -6, 0]
                     }}
                     transition={{ 
                       scale: { delay: 0.45, type: 'spring', damping: 12, stiffness: 200 },
                       opacity: { delay: 0.45, duration: 0.3 },
                       y: { repeat: Infinity, duration: 3, ease: 'easeInOut', delay: 0.8 }
                     }}
-                    whileHover={{ scale: 1.12, rotate: -2 }}
+                    whileHover={{ scale: 1.14, rotate: -2 }}
                     className="pt-2 cursor-pointer"
                   >
                     <img 
                       src="/assets/canva/elements/asset_06_525x350.png" 
                       alt="SALE SALE SALE" 
-                      className="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-xl"
+                      className="h-32 sm:h-40 md:h-48 lg:h-52 w-auto object-contain drop-shadow-2xl"
                     />
                   </motion.div>
                 </motion.div>
@@ -521,20 +521,20 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                   initial={{ x: 40, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  className="flex flex-col items-center text-center space-y-5 sm:space-y-6"
                 >
-                  {/* Top: KFC Logo */}
+                  {/* Top: KFC Logo (Enlarged) */}
                   <motion.div 
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.28, type: 'spring', damping: 14, stiffness: 200 }}
                     whileHover={{ scale: 1.08, rotate: 2 }}
-                    className="h-16 sm:h-20 flex items-center justify-center cursor-pointer"
+                    className="h-24 sm:h-32 md:h-36 lg:h-40 flex items-center justify-center cursor-pointer"
                   >
                     <img 
                       src="/assets/canva/elements/asset_04_2400x1350.png" 
                       alt="KFC" 
-                      className="h-full w-auto object-contain drop-shadow-md"
+                      className="h-full w-auto object-contain drop-shadow-xl"
                     />
                   </motion.div>
 
@@ -551,8 +551,8 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                     />
                   </div>
 
-                  {/* Bottom: Jollibee + Pizza Hut Logos */}
-                  <div className="flex items-center justify-center gap-6 sm:gap-8 pt-2">
+                  {/* Bottom: Jollibee + Pizza Hut Logos (Enlarged) */}
+                  <div className="flex items-center justify-center gap-8 sm:gap-12 pt-2">
                     <motion.div
                       initial={{ scale: 0.6, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
@@ -563,7 +563,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                       <img 
                         src="/assets/canva/elements/asset_03_2400x1600.png" 
                         alt="Jollibee" 
-                        className="h-16 sm:h-20 w-auto object-contain drop-shadow-md"
+                        className="h-24 sm:h-30 md:h-36 w-auto object-contain drop-shadow-xl"
                       />
                     </motion.div>
                     <motion.div
@@ -576,7 +576,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                       <img 
                         src="/assets/canva/elements/asset_05_2400x1350.png" 
                         alt="Pizza Hut" 
-                        className="h-16 sm:h-20 w-auto object-contain drop-shadow-md"
+                        className="h-24 sm:h-30 md:h-36 w-auto object-contain drop-shadow-xl"
                       />
                     </motion.div>
                   </div>
