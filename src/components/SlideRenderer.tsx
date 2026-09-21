@@ -68,7 +68,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         className={`relative w-full h-full overflow-hidden flex flex-col justify-between select-none font-sans border border-slate-200/80 ${
           slide.id <= 2 
             ? 'p-0 bg-slate-950' 
-            : (slide.id === 6 || slide.id === 7)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9)
               ? 'canva-cloud-bg text-slate-900 px-4 sm:px-6 pt-3 pb-2' 
               : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
         }`}
@@ -96,7 +96,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${
           slide.id <= 2 
             ? 'h-full max-w-none p-0' 
-            : (slide.id === 6 || slide.id === 7)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9)
               ? 'w-full h-full max-w-6xl mx-auto p-0' 
               : 'max-w-5xl mx-auto py-2'
         }`}>
@@ -1093,79 +1093,105 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 9. WHITE (WEST vs ASIA) ======================= */}
           {slide.id === 9 && (
-            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
-              <motion.h2 
-                initial={{ y: -28, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-slate-900 mb-8 sm:mb-12"
-              >
-                WHITE
-              </motion.h2>
-
-              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
-                {/* Left Column: WEST */}
+            <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
+              <div className="relative w-full aspect-[990/560] max-h-full max-w-full mx-auto">
+                {/* 1. Title: WHITE */}
                 <motion.div 
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => soundEngine.playChime()}
+                  className="absolute font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer z-10"
+                  style={{
+                    left: '50%',
+                    top: '12%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      WEST
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                    whileHover={{ scale: 1.04, y: -4 }}
-                    className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 cursor-pointer"
-                  >
-                    <img src="/assets/photos/bride.jpg" alt="West Wedding" className="w-full h-full object-cover" />
-                  </motion.div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Weddings, Purity & Peace
-                  </span>
+                  WHITE
                 </motion.div>
 
-                {/* Right Column: ASIA */}
+                {/* 2. Heading: WEST */}
                 <motion.div 
-                  initial={{ x: 40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+                  initial={{ y: -15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
+                  style={{
+                    left: '26.9%',
+                    top: '25.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      ASIA
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.35, duration: 0.5 }}
-                    whileHover={{ scale: 1.04, y: -4 }}
-                    className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 cursor-pointer"
-                  >
-                    <img src="/assets/canva/elements/asset_07_850x564.png" alt="Asia Mourning" className="w-full h-full object-cover" />
-                  </motion.div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Funerals, Mourning & Rebirth
-                  </span>
+                  WEST
+                </motion.div>
+
+                {/* 3. Left Photo: Bride Wedding Dress (WEST) */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(440)}
+                  className="absolute overflow-hidden shadow-md border border-white/60 cursor-pointer rounded-xs"
+                  style={{
+                    left: '9.2%',
+                    top: '32%',
+                    width: '35.5%',
+                    height: '55.2%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/bride_west.jpg" 
+                    alt="Western White Bridal Wedding Dress" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 4. Heading: ASIA */}
+                <motion.div 
+                  initial={{ y: -15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
+                  style={{
+                    left: '74.4%',
+                    top: '25.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                    lineHeight: 1,
+                  }}
+                >
+                  ASIA
+                </motion.div>
+
+                {/* 5. Right Photo: Korean Traditional Funeral (ASIA) */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(349.23)}
+                  className="absolute overflow-hidden shadow-md border border-white/60 cursor-pointer rounded-xs"
+                  style={{
+                    left: '50.2%',
+                    top: '32%',
+                    width: '48.4%',
+                    height: '56.6%',
+                  }}
+                >
+                  <img 
+                    src="/assets/canva/elements/asset_07_850x564.png" 
+                    alt="Traditional Asian Mourning and Funeral White Robes" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
               </div>
             </div>
