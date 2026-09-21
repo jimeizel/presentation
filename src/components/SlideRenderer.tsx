@@ -66,7 +66,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
     <MotionConfig reducedMotion={isExportMode ? "always" : "never"} transition={isExportMode ? { duration: 0 } : undefined}>
       <div 
         className={`relative w-full h-full overflow-hidden flex flex-col justify-between select-none font-sans border border-slate-200/80 ${
-          slide.id <= 2 ? 'p-0 bg-slate-950' : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
+          slide.id <= 2 
+            ? 'p-0 bg-slate-950' 
+            : slide.id === 6 
+              ? 'canva-cloud-bg text-slate-900 px-4 sm:px-6 pt-3 pb-2' 
+              : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
         }`}
       >
         {/* Subtle Canva Top Breadcrumb Header (Only for Slides 3+) */}
@@ -89,7 +93,13 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         )}
 
         {/* Slide Main Stage */}
-        <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${slide.id <= 2 ? 'h-full max-w-none p-0' : 'max-w-5xl mx-auto py-2'}`}>
+        <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${
+          slide.id <= 2 
+            ? 'h-full max-w-none p-0' 
+            : slide.id === 6 
+              ? 'w-full h-full max-w-6xl mx-auto p-0' 
+              : 'max-w-5xl mx-auto py-2'
+        }`}>
 
           {/* ======================= 1. GUESS THE COLOR: BLACK & WHITE ANIMATED SPLIT (TEXTLESS) ======================= */}
           {slide.id === 1 && (
@@ -587,135 +597,247 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 6. BLUE ======================= */}
           {slide.id === 6 && (
-            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
-              {/* Title BLUE */}
-              <motion.h2 
-                initial={{ y: -28, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#0047AB] mb-8 sm:mb-12"
-              >
-                BLUE
-              </motion.h2>
-
-              <div className="grid grid-cols-2 gap-10 md:gap-20 w-full items-center">
-                {/* Left Column: peace. */}
+            <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
+              <div className="relative w-full aspect-[1024/592] max-h-full max-w-full mx-auto">
+                {/* 1. Title: BLUE */}
                 <motion.div 
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => soundEngine.playChime()}
+                  className="absolute font-canva-serif font-black uppercase text-[#00008B] select-none tracking-wider cursor-pointer z-10"
+                  style={{
+                    left: '49.4%',
+                    top: '21%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  {/* Top: Handshake photo */}
-                  <motion.div 
-                    initial={{ y: -15, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2, type: 'spring', damping: 14, stiffness: 200 }}
-                    whileHover={{ scale: 1.08, y: -3 }}
-                    className="h-20 sm:h-24 w-36 sm:w-44 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 cursor-pointer"
+                  BLUE
+                </motion.div>
+
+                {/* 2. Top-Left: Handshake Photo */}
+                <motion.div 
+                  initial={{ x: -30, y: -20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(392)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '6.7%',
+                    top: '14.9%',
+                    width: '24.7%',
+                    height: '28.5%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/handshake.jpg" 
+                    alt="Peace & Agreement Handshake" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 3. Middle-Left: peace */}
+                <motion.div 
+                  initial={{ x: -25, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.06 }}
+                  onClick={() => soundEngine.playTone(440)}
+                  className="absolute flex flex-col cursor-pointer group z-10"
+                  style={{
+                    left: '20.3%',
+                    top: '53.5%',
+                  }}
+                >
+                  <span 
+                    className="font-sans font-black tracking-tight text-black select-none leading-none"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.6cqi, 3.6rem)',
+                    }}
                   >
-                    <img 
-                      src="/assets/photos/handshake.jpg" 
-                      alt="Peace & Agreement" 
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
+                    peace
+                  </span>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.4, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-black origin-left rounded-full mt-1 sm:mt-1.5"
+                    style={{ height: 'clamp(3px, 0.55cqi, 6px)' }}
+                  />
+                </motion.div>
 
-                  {/* Center: peace. with animated underline */}
-                  <div className="relative inline-block">
-                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900">
-                      peace
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[5px] bg-slate-900 mt-2 origin-left rounded-full"
-                    />
-                  </div>
+                {/* 4. Bottom-Left: Ocean Waves Photo */}
+                <motion.div 
+                  initial={{ x: -30, y: 20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(349.23)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '6.2%',
+                    top: '62.0%',
+                    width: '28.0%',
+                    height: '32.3%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/ocean.jpg" 
+                    alt="Calm Blue Ocean" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
 
-                  {/* Bottom: Ocean Waves + Earth Globe */}
-                  <div className="flex items-center justify-center gap-4 pt-1">
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.4, type: 'spring', damping: 14 }}
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white cursor-pointer"
-                    >
-                      <img src="/assets/photos/ocean.jpg" alt="Ocean" className="w-full h-full object-cover" />
-                    </motion.div>
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ 
-                        scale: 1, 
-                        opacity: 1,
-                        rotate: [0, 4, 0, -4, 0]
+                {/* 5. Bottom-Center: Earth Globe Satellite */}
+                <motion.div 
+                  initial={{ scale: 0.7, opacity: 0 }}
+                  animate={{ 
+                    scale: 1, 
+                    opacity: 1,
+                    y: [0, -5, 0],
+                    rotate: [0, 4, 0, -4, 0]
+                  }}
+                  transition={{ 
+                    scale: { delay: 0.4, type: 'spring', damping: 14, stiffness: 180 },
+                    opacity: { delay: 0.4, duration: 0.4 },
+                    y: { repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 0.8 },
+                    rotate: { repeat: Infinity, duration: 9, ease: 'easeInOut', delay: 1 }
+                  }}
+                  whileHover={{ scale: 1.15, rotate: 15 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => soundEngine.playTone(523.25)}
+                  className="absolute cursor-pointer select-none rounded-full drop-shadow-xl z-10"
+                  style={{
+                    left: '41.7%',
+                    top: '66.7%',
+                    width: '13.8%',
+                    aspectRatio: '1 / 1',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/earth_globe.png" 
+                    alt="Earth Globe" 
+                    className="w-full h-full object-contain filter drop-shadow-md pointer-events-none"
+                  />
+                </motion.div>
+
+                {/* 6. Upper-Right: LinkedIn Logo */}
+                <motion.div 
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.28, type: 'spring', damping: 14, stiffness: 220 }}
+                  whileHover={{ scale: 1.12, rotate: 4 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => soundEngine.playTone(493.88)}
+                  className="absolute cursor-pointer group z-10"
+                  style={{
+                    left: '63.6%',
+                    top: '29.9%',
+                    width: '11.4%',
+                    aspectRatio: '1 / 1',
+                  }}
+                >
+                  <div className="relative w-full h-full">
+                    <svg viewBox="0 0 24 24" className="w-full h-full drop-shadow-lg" fill="none">
+                      <rect width="24" height="24" rx="4.5" fill="#0A66C2" />
+                      <path d="M7.8 19H5.2V10.4h2.6V19zM6.5 9.2c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm12.3 9.8h-2.6v-4.2c0-1-.02-2.3-1.4-2.3-1.4 0-1.6 1.1-1.6 2.2v4.3H10.6V10.4h2.5v1.2h.03c.35-.7 1.25-1.4 2.5-1.4 2.7 0 3.2 1.8 3.2 4.1v4.7z" fill="white" />
+                    </svg>
+                    <span 
+                      className="absolute font-sans font-bold text-[#0A66C2] select-none"
+                      style={{
+                        bottom: '-4%',
+                        right: '-16%',
+                        fontSize: 'clamp(0.6rem, 1.3cqi, 1rem)',
+                        lineHeight: 1,
                       }}
-                      transition={{ 
-                        scale: { delay: 0.48, type: 'spring', damping: 14 },
-                        rotate: { repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 1 }
-                      }}
-                      whileHover={{ scale: 1.18, rotate: 20 }}
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shadow-md border border-white cursor-pointer"
                     >
-                      <img src="/assets/photos/earth.jpg" alt="Earth" className="w-full h-full object-cover" />
-                    </motion.div>
+                      ®
+                    </span>
                   </div>
                 </motion.div>
 
-                {/* Right Column: stability. */}
+                {/* 7. Middle-Right: stability. */}
                 <motion.div 
-                  initial={{ x: 40, opacity: 0 }}
+                  initial={{ x: 25, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.06 }}
+                  onClick={() => soundEngine.playTone(440)}
+                  className="absolute flex flex-col cursor-pointer group z-10"
+                  style={{
+                    left: '51.0%',
+                    top: '51.5%',
+                  }}
+                >
+                  <span 
+                    className="font-sans font-black tracking-tight text-black select-none leading-none"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.6cqi, 3.6rem)',
+                    }}
+                  >
+                    stability.
+                  </span>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.48, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-black origin-left rounded-full mt-1 sm:mt-1.5"
+                    style={{ 
+                      height: 'clamp(3px, 0.55cqi, 6px)',
+                      width: 'calc(100% - clamp(6px, 1.2cqi, 14px))',
+                    }}
+                  />
+                </motion.div>
+
+                {/* 8. Bottom-Right: Facebook Logo */}
+                <motion.div 
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.45, type: 'spring', damping: 14, stiffness: 220 }}
+                  whileHover={{ scale: 1.1, rotate: -4 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => soundEngine.playTone(392)}
+                  className="absolute cursor-pointer z-10"
+                  style={{
+                    left: '66.8%',
+                    top: '68.2%',
+                    width: '18.2%',
+                    aspectRatio: '1 / 1',
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" className="w-full h-full drop-shadow-xl" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="white" />
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2" />
+                  </svg>
+                </motion.div>
+
+                {/* 9. Far-Right: Doctor in Scrubs */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  whileHover={{ scale: 1.04, x: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(329.63)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '80.1%',
+                    top: '16.0%',
+                    width: '18.4%',
+                    height: '45.6%',
+                  }}
                 >
-                  {/* Top: LinkedIn Badge */}
-                  <motion.div 
-                    initial={{ scale: 0.6, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.28, type: 'spring', damping: 14, stiffness: 220 }}
-                    whileHover={{ scale: 1.15, rotate: 6 }}
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-[#0A66C2] flex items-center justify-center shadow-lg text-white font-bold text-3xl font-sans cursor-pointer"
-                  >
-                    in
-                  </motion.div>
-
-                  {/* Center: stability. with animated underline */}
-                  <div className="relative inline-block">
-                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900">
-                      stability.
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.42, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[5px] bg-slate-900 mt-2 origin-left rounded-full"
-                    />
-                  </div>
-
-                  {/* Bottom: Doctor in Scrubs + Facebook */}
-                  <div className="flex items-center justify-center gap-4 pt-1">
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.5, type: 'spring', damping: 14 }}
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white cursor-pointer"
-                    >
-                      <img src="/assets/photos/doctor.jpg" alt="Healthcare Doctor" className="w-full h-full object-cover" />
-                    </motion.div>
-                    <motion.div 
-                      initial={{ scale: 0.6, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.58, type: 'spring', damping: 14, stiffness: 220 }}
-                      whileHover={{ scale: 1.15, rotate: -6 }}
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#1877F2] flex items-center justify-center shadow-lg text-white font-black text-3xl font-sans cursor-pointer"
-                    >
-                      f
-                    </motion.div>
-                  </div>
+                  <img 
+                    src="/assets/photos/doctor_scrubs.jpg" 
+                    alt="Healthcare Worker in Navy Scrubs" 
+                    className="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
               </div>
             </div>
