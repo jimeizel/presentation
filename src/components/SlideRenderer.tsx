@@ -600,23 +600,25 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
             <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
               <div className="relative w-full aspect-[1024/592] max-h-full max-w-full mx-auto">
                 {/* 1. Title: BLUE */}
-                <motion.div 
-                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => soundEngine.playChime()}
-                  className="absolute font-canva-serif font-black uppercase text-[#00008B] select-none tracking-wider cursor-pointer z-10"
-                  style={{
-                    left: '49.4%',
-                    top: '21%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
-                    lineHeight: 1,
-                  }}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '49.4%', top: '21%' }}
                 >
-                  BLUE
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => soundEngine.playChime()}
+                    className="font-canva-serif font-black uppercase text-[#00008B] select-none tracking-wider cursor-pointer whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    BLUE
+                  </motion.div>
+                </div>
 
                 {/* 2. Top-Left: Handshake Photo */}
                 <motion.div 
@@ -848,23 +850,25 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
             <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
               <div className="relative w-full aspect-[1024/593] max-h-full max-w-full mx-auto">
                 {/* 1. Title: YELLOW */}
-                <motion.div 
-                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => soundEngine.playChime()}
-                  className="absolute font-canva-serif font-black uppercase text-[#F9DC59] drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)] select-none tracking-wider cursor-pointer z-10"
-                  style={{
-                    left: '51.1%',
-                    top: '16.3%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
-                    lineHeight: 1,
-                  }}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '51.1%', top: '16.3%' }}
                 >
-                  YELLOW
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => soundEngine.playChime()}
+                    className="font-canva-serif font-black uppercase text-[#F9DC59] drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)] select-none tracking-wider cursor-pointer whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    YELLOW
+                  </motion.div>
+                </div>
 
                 {/* 2. Top-Left: Sun Photo */}
                 <motion.div 
@@ -1096,40 +1100,44 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
             <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
               <div className="relative w-full aspect-[990/560] max-h-full max-w-full mx-auto">
                 {/* 1. Title: WHITE */}
-                <motion.div 
-                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => soundEngine.playChime()}
-                  className="absolute font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer z-10"
-                  style={{
-                    left: '50%',
-                    top: '12%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
-                    lineHeight: 1,
-                  }}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '50%', top: '12%' }}
                 >
-                  WHITE
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => soundEngine.playChime()}
+                    className="font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    WHITE
+                  </motion.div>
+                </div>
 
                 {/* 2. Heading: WEST */}
-                <motion.div 
-                  initial={{ y: -15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
-                  style={{
-                    left: '26.9%',
-                    top: '25.5%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
-                    lineHeight: 1,
-                  }}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '26.9%', top: '25.5%' }}
                 >
-                  WEST
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    WEST
+                  </motion.div>
+                </div>
 
                 {/* 3. Left Photo: Bride Wedding Dress (WEST) */}
                 <motion.div 
@@ -1155,21 +1163,23 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                 </motion.div>
 
                 {/* 4. Heading: ASIA */}
-                <motion.div 
-                  initial={{ y: -15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
-                  style={{
-                    left: '74.4%',
-                    top: '25.5%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
-                    lineHeight: 1,
-                  }}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '74.4%', top: '25.5%' }}
                 >
-                  ASIA
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    ASIA
+                  </motion.div>
+                </div>
 
                 {/* 5. Right Photo: Korean Traditional Funeral (ASIA) */}
                 <motion.div 
@@ -1201,41 +1211,45 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
           {slide.id === 10 && (
             <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
               <div className="relative w-full aspect-[980/551] max-h-full max-w-full mx-auto">
-                {/* 1. Title: BLACK */}
-                <motion.div 
-                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => soundEngine.playChime()}
-                  className="absolute font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer z-10"
-                  style={{
-                    left: '50%',
-                    top: '11.5%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
-                    lineHeight: 1,
-                  }}
+                {/* 1. Title: BLACK (Properly centered wrapper div) */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '50%', top: '10%' }}
                 >
-                  BLACK
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -20, opacity: 0, scale: 0.95 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => soundEngine.playChime()}
+                    className="font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    BLACK
+                  </motion.div>
+                </div>
 
-                {/* 2. Heading: U.S.A. */}
-                <motion.div 
-                  initial={{ y: -15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
-                  style={{
-                    left: '17.2%',
-                    top: '21.5%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
-                    lineHeight: 1,
-                  }}
+                {/* 2. Heading: U.S.A. (Properly centered over column) */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '17.2%', top: '21.0%' }}
                 >
-                  U.S.A.
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    U.S.A.
+                  </motion.div>
+                </div>
 
                 {/* 3. Judge Photo (U.S.A.) */}
                 <motion.div 
@@ -1283,22 +1297,24 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
                   />
                 </motion.div>
 
-                {/* 5. Heading: AFRICA */}
-                <motion.div 
-                  initial={{ y: -15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
-                  style={{
-                    left: '75.7%',
-                    top: '21.5%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
-                    lineHeight: 1,
-                  }}
+                {/* 5. Heading: AFRICA (Properly centered over column) */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '75.7%', top: '21.0%' }}
                 >
-                  AFRICA
-                </motion.div>
+                  <motion.div 
+                    initial={{ y: -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    AFRICA
+                  </motion.div>
+                </div>
 
                 {/* 6. Muscular Athletic Man (AFRICA) */}
                 <motion.div 
