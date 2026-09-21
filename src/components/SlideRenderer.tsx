@@ -68,7 +68,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         className={`relative w-full h-full overflow-hidden flex flex-col justify-between select-none font-sans border border-slate-200/80 ${
           slide.id <= 2 
             ? 'p-0 bg-slate-950' 
-            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10 || slide.id === 11)
               ? 'canva-cloud-bg text-slate-900 px-4 sm:px-6 pt-3 pb-2' 
               : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
         }`}
@@ -96,7 +96,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${
           slide.id <= 2 
             ? 'h-full max-w-none p-0' 
-            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10 || slide.id === 11)
               ? 'w-full h-full max-w-6xl mx-auto p-0' 
               : 'max-w-5xl mx-auto py-2'
         }`}>
@@ -1367,91 +1367,111 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 11. GREEN (ISLAMIC vs IRISH) ======================= */}
           {slide.id === 11 && (
-            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
-              <motion.h2 
-                initial={{ y: -28, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#15803D] mb-8 sm:mb-12"
-              >
-                GREEN
-              </motion.h2>
-
-              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
-                {/* Left Column: ISLAMIC */}
-                <motion.div 
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+            <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
+              <div className="relative w-full aspect-[990/560] max-h-full max-w-full mx-auto">
+                {/* 1. Title: GREEN */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '50%', top: '11%' }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      ISLAMIC
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
                   <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                    whileHover={{ scale: 1.04, y: -4 }}
-                    className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 cursor-pointer"
+                    initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => soundEngine.playChime()}
+                    className="font-canva-serif font-black uppercase text-[#56911D] select-none tracking-wider cursor-pointer whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
+                      lineHeight: 1,
+                    }}
                   >
-                    <img src="/assets/canva/elements/asset_10_640x819.png" alt="Islamic Green Dome" className="w-full h-full object-cover" />
+                    GREEN
                   </motion.div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Paradise, Spirituality & Nature
-                  </span>
+                </div>
+
+                {/* 2. Heading: ISLAMIC */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '22.7%', top: '25.8%' }}
+                >
+                  <motion.div 
+                    initial={{ y: -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
+                  >
+                    ISLAMIC
+                  </motion.div>
+                </div>
+
+                {/* 3. Left Photo: Islamic Green Dome (Al-Masjid an-Nabawi) */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(392)}
+                  className="absolute overflow-hidden shadow-md border border-white/60 cursor-pointer rounded-xs"
+                  style={{
+                    left: '7.8%',
+                    top: '33.9%',
+                    width: '27.6%',
+                    height: '56.6%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/islamic_dome.jpg" 
+                    alt="Green Dome of the Prophet's Mosque in Medina" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
 
-                {/* Right Column: IRISH */}
-                <motion.div 
-                  initial={{ x: 40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+                {/* 4. Heading: IRISH */}
+                <div 
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+                  style={{ left: '73.5%', top: '25.8%' }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      IRISH
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
                   <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
+                    initial={{ y: -15, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.35, duration: 0.5 }}
-                    whileHover={{ scale: 1.04, y: -4 }}
-                    className="h-56 sm:h-72 w-full max-w-sm rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-emerald-600 via-green-700 to-emerald-900 p-8 flex flex-col items-center justify-center text-white border border-emerald-500 cursor-pointer"
+                    transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-sans font-black tracking-wider uppercase text-black select-none whitespace-nowrap"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                      lineHeight: 1,
+                    }}
                   >
-                    <motion.span 
-                      animate={{ scale: [1, 1.1, 1], rotate: [-2, 2, -2] }}
-                      transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                      className="text-6xl sm:text-7xl mb-4 filter drop-shadow-md inline-block"
-                    >
-                      ☘️
-                    </motion.span>
-                    <span className="text-xl sm:text-2xl font-canva-serif font-bold tracking-wider text-amber-200 uppercase">
-                      St. Patrick
-                    </span>
-                    <span className="text-sm font-sans text-emerald-100 font-semibold tracking-widest mt-1">
-                      Heritage & Luck
-                    </span>
+                    IRISH
                   </motion.div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Good Luck, Spring & Heritage
-                  </span>
+                </div>
+
+                {/* 5. Right Composition: Irish St. Patrick's & Leprechaun */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(523.25)}
+                  className="absolute cursor-pointer"
+                  style={{
+                    left: '50.3%',
+                    top: '33.8%',
+                    width: '49.5%',
+                    height: '63.4%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/irish_composition.png" 
+                    alt="St. Patrick's Day Board and Irish Leprechaun Cobbler" 
+                    className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
               </div>
             </div>
