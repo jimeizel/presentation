@@ -68,7 +68,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         className={`relative w-full h-full overflow-hidden flex flex-col justify-between select-none font-sans border border-slate-200/80 ${
           slide.id <= 2 
             ? 'p-0 bg-slate-950' 
-            : slide.id === 6 
+            : (slide.id === 6 || slide.id === 7)
               ? 'canva-cloud-bg text-slate-900 px-4 sm:px-6 pt-3 pb-2' 
               : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
         }`}
@@ -96,7 +96,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${
           slide.id <= 2 
             ? 'h-full max-w-none p-0' 
-            : slide.id === 6 
+            : (slide.id === 6 || slide.id === 7)
               ? 'w-full h-full max-w-6xl mx-auto p-0' 
               : 'max-w-5xl mx-auto py-2'
         }`}>
@@ -845,128 +845,233 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 7. YELLOW ======================= */}
           {slide.id === 7 && (
-            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
-              {/* Title YELLOW */}
-              <motion.h2 
-                initial={{ y: -28, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-[#D97706] mb-8 sm:mb-12"
-              >
-                YELLOW
-              </motion.h2>
-
-              <div className="grid grid-cols-2 gap-10 md:gap-20 w-full items-center">
-                {/* Left Column: warmth */}
+            <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
+              <div className="relative w-full aspect-[1024/593] max-h-full max-w-full mx-auto">
+                {/* 1. Title: YELLOW */}
                 <motion.div 
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => soundEngine.playChime()}
+                  className="absolute font-canva-serif font-black uppercase text-[#F9DC59] drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)] select-none tracking-wider cursor-pointer z-10"
+                  style={{
+                    left: '51.1%',
+                    top: '16.3%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(2.2rem, 6.8cqi, 5.2rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  {/* Top: Glowing Sun */}
-                  <motion.div 
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ 
-                      scale: [1, 1.03, 1],
-                      opacity: 1 
-                    }}
-                    transition={{ 
-                      scale: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
-                      opacity: { duration: 0.4 }
-                    }}
-                    whileHover={{ scale: 1.08, y: -3 }}
-                    className="h-20 sm:h-24 w-36 sm:w-44 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 cursor-pointer"
-                  >
-                    <img 
-                      src="/assets/photos/sun.jpg" 
-                      alt="Warm Glowing Sun" 
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-
-                  {/* Center: warmth with animated underline */}
-                  <div className="relative inline-block">
-                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900">
-                      warmth
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[5px] bg-slate-900 mt-2 origin-left rounded-full"
-                    />
-                  </div>
-
-                  {/* Bottom: Incandescent Lightbulb */}
-                  <motion.div 
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.45, type: 'spring', damping: 14 }}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    className="h-16 sm:h-20 w-28 sm:w-32 rounded-xl overflow-hidden shadow-md border border-white cursor-pointer"
-                  >
-                    <img src="/assets/photos/lightbulb.jpg" alt="Lightbulb" className="w-full h-full object-cover" />
-                  </motion.div>
+                  YELLOW
                 </motion.div>
 
-                {/* Right Column: attention */}
+                {/* 2. Top-Left: Sun Photo */}
                 <motion.div 
-                  initial={{ x: 40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-6"
+                  initial={{ x: -30, y: -20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(392)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '3.8%',
+                    top: '14.8%',
+                    width: '28.7%',
+                    height: '27.8%',
+                  }}
                 >
-                  {/* Top: Pedestrian Crossing Road Sign */}
-                  <motion.div 
-                    initial={{ scale: 0.6, opacity: 0, rotate: 25 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 45 }}
-                    transition={{ delay: 0.28, type: 'spring', damping: 14, stiffness: 220 }}
-                    whileHover={{ scale: 1.15, rotate: 50 }}
-                    className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-400 rounded-lg border-2 border-black flex items-center justify-center shadow-lg cursor-pointer"
+                  <img 
+                    src="/assets/photos/sun_golden.jpg" 
+                    alt="Warm Glowing Sun in Sky" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 3. Top-Right: Traffic & Pedestrian Signs */}
+                <motion.div 
+                  initial={{ x: 30, y: -20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.04, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(440)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '78.2%',
+                    top: '3.5%',
+                    width: '20.1%',
+                    height: '43.7%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/traffic_signs.jpg" 
+                    alt="Traffic and Pedestrian Crossing Signs" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 4. Center: Emoji (Laughing Tears of Joy 😂) */}
+                <motion.div 
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  animate={{ 
+                    scale: 1, 
+                    opacity: 1,
+                    y: [0, -6, 0],
+                    rotate: [0, 3, 0, -3, 0]
+                  }}
+                  transition={{ 
+                    scale: { delay: 0.28, type: 'spring', damping: 14, stiffness: 200 },
+                    opacity: { delay: 0.28, duration: 0.4 },
+                    y: { repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.6 },
+                    rotate: { repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 0.8 }
+                  }}
+                  whileHover={{ scale: 1.18, rotate: 10 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => soundEngine.playTone(523.25)}
+                  className="absolute cursor-pointer select-none drop-shadow-lg z-20"
+                  style={{
+                    left: '42.0%',
+                    top: '29.3%',
+                    width: '15.5%',
+                    aspectRatio: '1 / 1',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/crying_laughing_emoji.png" 
+                    alt="Laughing Tears of Joy Emoji" 
+                    className="w-full h-full object-contain filter drop-shadow-md pointer-events-none"
+                  />
+                </motion.div>
+
+                {/* 5. Middle-Left: warmth */}
+                <motion.div 
+                  initial={{ x: -25, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.06 }}
+                  onClick={() => soundEngine.playTone(349.23)}
+                  className="absolute flex flex-col cursor-pointer group z-10"
+                  style={{
+                    left: '20.4%',
+                    top: '52.3%',
+                  }}
+                >
+                  <span 
+                    className="font-sans font-black tracking-tight text-black select-none leading-none"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.6cqi, 3.6rem)',
+                    }}
                   >
-                    <span className="-rotate-45 text-2xl sm:text-3xl">🚸</span>
-                  </motion.div>
+                    warmth
+                  </span>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.4, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-black origin-left rounded-full mt-1 sm:mt-1.5"
+                    style={{ height: 'clamp(3px, 0.55cqi, 6px)' }}
+                  />
+                </motion.div>
 
-                  {/* Center: attention with animated underline */}
-                  <div className="relative inline-block">
-                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-sans font-black tracking-tight text-slate-900">
-                      attention
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.42, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[5px] bg-slate-900 mt-2 origin-left rounded-full"
-                    />
-                  </div>
+                {/* 6. Middle-Right: attention */}
+                <motion.div 
+                  initial={{ x: 25, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.06 }}
+                  onClick={() => soundEngine.playTone(493.88)}
+                  className="absolute flex flex-col cursor-pointer group z-10"
+                  style={{
+                    left: '55.3%',
+                    top: '53.5%',
+                  }}
+                >
+                  <span 
+                    className="font-sans font-black tracking-tight text-black select-none leading-none"
+                    style={{
+                      fontSize: 'clamp(1.4rem, 4.6cqi, 3.6rem)',
+                    }}
+                  >
+                    attention
+                  </span>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.48, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="bg-black origin-left rounded-full mt-1 sm:mt-1.5"
+                    style={{ height: 'clamp(3px, 0.55cqi, 6px)' }}
+                  />
+                </motion.div>
 
-                  {/* Bottom: 😂 Emoji + School bus + Caution banner */}
-                  <div className="flex items-center justify-center gap-4 pt-1">
-                    <motion.span 
-                      animate={{ y: [0, -6, 0] }}
-                      transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-                      whileHover={{ scale: 1.3, rotate: -10 }}
-                      className="text-4xl sm:text-5xl inline-block cursor-pointer"
-                    >
-                      😂
-                    </motion.span>
-                    <motion.span 
-                      whileHover={{ scale: 1.25, x: 4 }}
-                      className="text-4xl sm:text-5xl inline-block cursor-pointer"
-                    >
-                      🚌
-                    </motion.span>
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
-                      animate={{ scale: 1, opacity: 1, rotate: -3 }}
-                      transition={{ delay: 0.5, type: 'spring', damping: 14 }}
-                      whileHover={{ scale: 1.12, rotate: 0 }}
-                      className="bg-amber-300 border-2 border-black px-3 py-1 font-black text-black text-xs sm:text-sm tracking-wider uppercase shadow-md cursor-pointer"
-                    >
-                      CAUTION
-                    </motion.div>
-                  </div>
+                {/* 7. Bottom-Left: Lightbulb Photo */}
+                <motion.div 
+                  initial={{ x: -30, y: 20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(329.63)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '2.3%',
+                    top: '67.8%',
+                    width: '19.5%',
+                    height: '22.1%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/lightbulb_hanging.jpg" 
+                    alt="Glowing Lightbulb" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 8. Bottom-Center: School Bus Graphic */}
+                <motion.div 
+                  initial={{ x: -20, opacity: 0, scale: 0.85 }}
+                  animate={{ x: 0, opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.38, type: 'spring', damping: 14, stiffness: 180 }}
+                  whileHover={{ scale: 1.08, x: 5 }}
+                  whileTap={{ scale: 0.96 }}
+                  onClick={() => soundEngine.playTone(293.66)}
+                  className="absolute cursor-pointer select-none drop-shadow-md z-10"
+                  style={{
+                    left: '24.4%',
+                    top: '74.2%',
+                    width: '26.3%',
+                    height: '24.3%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/school_bus.png" 
+                    alt="Yellow School Bus" 
+                    className="w-full h-full object-contain pointer-events-none"
+                  />
+                </motion.div>
+
+                {/* 9. Bottom-Right: Caution Tape Photo */}
+                <motion.div 
+                  initial={{ x: 30, y: 20, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ delay: 0.42, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.04, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(392)}
+                  className="absolute overflow-hidden shadow-md border border-white/80 cursor-pointer rounded-xs"
+                  style={{
+                    left: '54.7%',
+                    top: '67.6%',
+                    width: '35.3%',
+                    height: '30.2%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/caution_tape.jpg" 
+                    alt="Yellow Caution Tape" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
               </div>
             </div>
