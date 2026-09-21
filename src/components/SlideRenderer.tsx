@@ -68,7 +68,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         className={`relative w-full h-full overflow-hidden flex flex-col justify-between select-none font-sans border border-slate-200/80 ${
           slide.id <= 2 
             ? 'p-0 bg-slate-950' 
-            : (slide.id === 6 || slide.id === 7 || slide.id === 9)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10)
               ? 'canva-cloud-bg text-slate-900 px-4 sm:px-6 pt-3 pb-2' 
               : 'canva-cloud-bg text-slate-900 p-6 sm:p-10 md:p-12 lg:p-14'
         }`}
@@ -96,7 +96,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
         <div className={`relative z-10 flex-1 flex flex-col justify-center items-center my-auto w-full ${
           slide.id <= 2 
             ? 'h-full max-w-none p-0' 
-            : (slide.id === 6 || slide.id === 7 || slide.id === 9)
+            : (slide.id === 6 || slide.id === 7 || slide.id === 9 || slide.id === 10)
               ? 'w-full h-full max-w-6xl mx-auto p-0' 
               : 'max-w-5xl mx-auto py-2'
         }`}>
@@ -1199,101 +1199,151 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
 
           {/* ======================= 10. BLACK (U.S.A. vs AFRICA) ======================= */}
           {slide.id === 10 && (
-            <div className="w-full max-w-5xl mx-auto my-auto flex flex-col items-center justify-center">
-              <motion.h2 
-                initial={{ y: -28, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="text-6xl sm:text-8xl md:text-9xl font-canva-serif font-black uppercase tracking-wider text-slate-950 mb-8 sm:mb-12"
-              >
-                BLACK
-              </motion.h2>
-
-              <div className="grid grid-cols-2 gap-10 md:gap-16 w-full items-start">
-                {/* Left Column: U.S.A. */}
+            <div className="relative w-full h-full flex items-center justify-center [container-type:inline-size]">
+              <div className="relative w-full aspect-[980/551] max-h-full max-w-full mx-auto">
+                {/* 1. Title: BLACK */}
                 <motion.div 
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+                  initial={{ y: -25, opacity: 0, scale: 0.95 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => soundEngine.playChime()}
+                  className="absolute font-canva-serif font-black uppercase text-black select-none tracking-wider cursor-pointer z-10"
+                  style={{
+                    left: '50%',
+                    top: '11.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(2.4rem, 7.2cqi, 5.5rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      U.S.A.
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-3 w-full max-w-sm">
-                    <motion.div 
-                      initial={{ y: 15, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.25 }}
-                      whileHover={{ scale: 1.04, y: -2 }}
-                      className="h-32 sm:h-36 rounded-xl overflow-hidden shadow-lg border border-slate-200 cursor-pointer"
-                    >
-                      <img src="/assets/canva/elements/asset_08_390x280.png" alt="USA Judge" className="w-full h-full object-cover" />
-                    </motion.div>
-                    <motion.div 
-                      initial={{ y: 15, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.35 }}
-                      whileHover={{ scale: 1.04, y: -2 }}
-                      className="h-32 sm:h-36 rounded-xl overflow-hidden shadow-lg border border-slate-200 cursor-pointer"
-                    >
-                      <img src="/assets/photos/black_car.jpg" alt="Black Sports Car" className="w-full h-full object-cover" />
-                    </motion.div>
-                  </div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Authority, Judiciary & Elegance
-                  </span>
+                  BLACK
                 </motion.div>
 
-                {/* Right Column: AFRICA */}
+                {/* 2. Heading: U.S.A. */}
                 <motion.div 
-                  initial={{ x: 40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center space-y-4"
+                  initial={{ y: -15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.18, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
+                  style={{
+                    left: '17.2%',
+                    top: '21.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                    lineHeight: 1,
+                  }}
                 >
-                  <div className="relative inline-block">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-sans font-black tracking-wider uppercase text-slate-900">
-                      AFRICA
-                    </h3>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[4px] bg-slate-900 mt-1 origin-left rounded-full"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-3 w-full max-w-sm items-center">
-                    <motion.div 
-                      initial={{ y: 15, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                      whileHover={{ scale: 1.04, y: -2 }}
-                      className="h-44 sm:h-48 w-full rounded-xl overflow-hidden shadow-lg border border-slate-200 cursor-pointer"
-                    >
-                      <img src="/assets/photos/muscular.jpg" alt="Strength & Masculinity" className="w-full h-full object-cover" />
-                    </motion.div>
-                    <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.4, type: 'spring', damping: 14 }}
-                      whileHover={{ scale: 1.08, rotate: 3 }}
-                      className="h-20 sm:h-24 w-full rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-slate-950 cursor-pointer"
-                    >
-                      <img src="/assets/canva/elements/asset_09_447x447.png" alt="Mature" className="h-full w-auto object-contain" />
-                    </motion.div>
-                  </div>
-                  <span className="text-xs sm:text-sm font-semibold tracking-widest text-slate-500 uppercase">
-                    Strength, Maturity & Seniority
-                  </span>
+                  U.S.A.
+                </motion.div>
+
+                {/* 3. Judge Photo (U.S.A.) */}
+                <motion.div 
+                  initial={{ x: -30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(329.63)}
+                  className="absolute overflow-hidden shadow-md border border-white/60 cursor-pointer rounded-xs z-0"
+                  style={{
+                    left: '5.6%',
+                    top: '30.8%',
+                    width: '33.8%',
+                    height: '38.7%',
+                  }}
+                >
+                  <img 
+                    src="/assets/canva/elements/asset_08_390x280.png" 
+                    alt="USA Courtroom Judge in Black Robe" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 4. Black Sports Car (U.S.A. - overlaps lower-right of Judge photo) */}
+                <motion.div 
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.32, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.03, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(440)}
+                  className="absolute overflow-hidden shadow-xl border border-white/70 cursor-pointer rounded-xs z-10"
+                  style={{
+                    left: '11.4%',
+                    top: '64.8%',
+                    width: '39.9%',
+                    height: '29.2%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/car_rx7_black.jpg" 
+                    alt="Sleek Black Sports Car" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 5. Heading: AFRICA */}
+                <motion.div 
+                  initial={{ y: -15, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.22, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute font-sans font-black tracking-wider uppercase text-black select-none z-10"
+                  style={{
+                    left: '75.7%',
+                    top: '21.5%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: 'clamp(1.4rem, 4.4cqi, 3.4rem)',
+                    lineHeight: 1,
+                  }}
+                >
+                  AFRICA
+                </motion.div>
+
+                {/* 6. Muscular Athletic Man (AFRICA) */}
+                <motion.div 
+                  initial={{ x: 30, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.28, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => soundEngine.playTone(261.63)}
+                  className="absolute overflow-hidden shadow-md border border-white/60 cursor-pointer rounded-xs z-10"
+                  style={{
+                    left: '63.0%',
+                    top: '30.0%',
+                    width: '32.1%',
+                    height: '37.6%',
+                  }}
+                >
+                  <img 
+                    src="/assets/photos/muscular_africa.jpg" 
+                    alt="Strength and Masculinity" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* 7. Mature Badge (AFRICA) */}
+                <motion.div 
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.36, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => soundEngine.playChime()}
+                  className="absolute overflow-hidden shadow-xl border border-white/60 cursor-pointer rounded-xs z-10 bg-[#011111]"
+                  style={{
+                    left: '57.9%',
+                    top: '72.6%',
+                    width: '30.6%',
+                    height: '21.2%',
+                  }}
+                >
+                  <img 
+                    src="/assets/canva/elements/mature_badge.png" 
+                    alt="✨ Mature ✨" 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
                 </motion.div>
               </div>
             </div>
